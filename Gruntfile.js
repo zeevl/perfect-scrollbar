@@ -29,6 +29,13 @@ module.exports = function (grunt) {
         }
       }
     },
+    less: {
+      dist: {
+        files: {
+          'src/perfect-scrollbar.css': ['src/perfect-scrollbar.less']
+        }
+      }
+    },
     jshint: {
       gruntfile: {
         options: {
@@ -70,6 +77,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-csslint');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
 
@@ -81,7 +89,7 @@ module.exports = function (grunt) {
   });
 
   grunt.registerTask('lint', ['jshint', 'csslint']);
-  grunt.registerTask('build', ['clean', 'uglify', 'cssmin']);
+  grunt.registerTask('build', ['clean', 'less', 'uglify', 'cssmin']);
   grunt.registerTask('travis', ['lint']);
 
 };
